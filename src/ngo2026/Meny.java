@@ -4,8 +4,7 @@
  */
 package ngo2026;
 // Teat av Git Desktop
-// Test 2 av Git
-//sista testet ni ka ta bort denna och dem två kommentarerna ovan
+
 import oru.inf.InfDB; 
 import oru.inf.InfException;
 
