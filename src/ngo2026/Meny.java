@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2026;
-
+// Teat av Git Desktop
 import oru.inf.InfDB; 
 import oru.inf.InfException;
 
