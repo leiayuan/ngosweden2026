@@ -103,23 +103,60 @@ public class inloggning extends javax.swing.JFrame {
         String epost = TfEpost.getText();
         String losen = TfLosenord.getText();
         
-        try{
-            String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + epost + "'";
-            System.out.println(sqlFraga);
-            String dbLosen = idb.fetchSingle(sqlFraga);
-            if(losen.equals(dbLosen)){
-                new Meny(idb, epost).setVisible(true);
-            }
-            else{
-             lblFelmeddelande.setVisible(true);   
-            }
-        }catch(InfException ex){
-           System.out.print(ex.getMessage());
-             
-        }
-    }//GEN-LAST:event_btnLoggaINActionPerformed
+   
+        try {
+        String sqlFraga =
+        "SELECT losenord FROM anstalld WHERE epost = '" + epost + "'";
 
-    /**
+        String dbLosen = idb.fetchSingle(sqlFraga);
+
+        if (dbLosen == null) {
+            lblFelmeddelande.setVisible(true);
+            return;
+        }
+
+        if (losen.equals(dbLosen)) {
+String roll = null;
+
+// kolla admin
+if (idb.fetchSingle(
+        "SELECT epost FROM admin WHERE epost = '" + epost + "'") != null) {
+    roll = "ADMIN";
+}
+// kolla projektchef
+else if (idb.fetchSingle(
+        "SELECT epost FROM projektchef WHERE epost = '" + epost + "'") != null) {
+    roll = "PROJEKTCHEF";
+}
+// annars handläggare
+else if (idb.fetchSingle(
+        "SELECT epost FROM handlaggare WHERE epost = '" + epost + "'") != null) {
+    roll = "HANDLÄGGARE";
+}
+            
+
+            String avdelning = idb.fetchSingle(
+                "SELECT avdelning FROM anstalld WHERE epost = '" + epost + "'"
+            );
+
+            new Meny(idb, roll, epost, avdelning).setVisible(true);
+            this.dispose(); // stäng loginfönstret
+
+        } else {
+            lblFelmeddelande.setVisible(true);
+        }
+
+    } catch (InfException ex) {
+        System.out.println(ex.getMessage());
+        lblFelmeddelande.setVisible(true);
+    }
+
+
+            
+        
+       
+    }//GEN-LAST:event_btnLoggaINActionPerformed
+ /**
      * @param args the command line arguments
      */
     
@@ -132,4 +169,4 @@ public class inloggning extends javax.swing.JFrame {
     private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLosenord;
     // End of variables declaration//GEN-END:variables
-}
+} 

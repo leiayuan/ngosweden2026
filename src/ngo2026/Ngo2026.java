@@ -14,14 +14,18 @@ public class Ngo2026 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try{
-            idb = new InfDB("SDGSweden", "3306", "dbAdmin2024", "dbAdmin2024PW");
+         try {
+            InfDB idb = new InfDB(
+                "SDGSweden",
+                "3306",
+                "dbAdmin2024",
+                "dbAdmin2024PW"
+            );
+
             new inloggning(idb).setVisible(true);
-            
-        } catch (InfException ex){
+
+        } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
     }
-       
-    
 }
