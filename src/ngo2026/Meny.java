@@ -4,6 +4,7 @@
  */
 package ngo2026;
 // Teat av Git Desktop
+// Test 2 av Git
 import oru.inf.InfDB; 
 import oru.inf.InfException;
 
