@@ -26,8 +26,7 @@ public class Meny extends javax.swing.JFrame {
         this.inloggadAnvandare = epost;
         this.idb = idb;     
         initComponents();
-        lblAnvandare.setText("Handläggare:" + epost);
-        // Göm allt först
+        lblAnvandare.setText("Användare" + epost);
         btnMinaProjekt.setVisible(true);   
         btnProjektAvdelning.setVisible(true);
         btnFiltreraProjekt.setVisible(true);
@@ -74,6 +73,7 @@ public class Meny extends javax.swing.JFrame {
         btnHallbarhetsmal.setText("Hållbarhetsmål");
 
         btnPersonalAvdelning.setText("Personal på min avdelning");
+        btnPersonalAvdelning.addActionListener(this::btnPersonalAvdelningActionPerformed);
 
         btnSokHandlaggare.setText("Sök handläggare");
 
@@ -84,70 +84,62 @@ public class Meny extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProjektAvdelning)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSokHandlaggare))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnPartners)
-                            .addComponent(btnFiltreraProjekt))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHallbarhetsmal)
-                    .addComponent(btnLoggaUt))
-                .addGap(88, 88, 88))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnSokHandlaggare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoggaUt)
+                        .addGap(45, 45, 45))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMinaProjekt)
+                            .addComponent(lblAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnMinaUppgifter)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnPersonalAvdelning)))
-                        .addGap(0, 44, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnProjektAvdelning)
+                                    .addComponent(btnMinaUppgifter))
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnPartners)
+                                            .addComponent(btnMinaProjekt))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnPersonalAvdelning)
+                                            .addComponent(btnHallbarhetsmal))
+                                        .addGap(48, 48, 48))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnFiltreraProjekt)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(31, 31, 31)
                 .addComponent(lblAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnMinaUppgifter)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPersonalAvdelning)
-                        .addGap(2, 2, 2)))
-                .addComponent(btnMinaProjekt)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProjektAvdelning)
-                    .addComponent(btnSokHandlaggare))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(200, 200, 200)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnProjektAvdelning)
+                            .addComponent(btnFiltreraProjekt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addComponent(btnLoggaUt)
+                        .addGap(97, 97, 97))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFiltreraProjekt))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btnHallbarhetsmal)))
-                .addGap(18, 18, 18)
-                .addComponent(btnPartners)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLoggaUt)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSokHandlaggare)
+                            .addComponent(btnPartners)
+                            .addComponent(btnPersonalAvdelning))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMinaProjekt)
+                            .addComponent(btnMinaUppgifter)
+                            .addComponent(btnHallbarhetsmal))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -160,6 +152,10 @@ public class Meny extends javax.swing.JFrame {
     private void btnProjektAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektAvdelningActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProjektAvdelningActionPerformed
+
+    private void btnPersonalAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalAvdelningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPersonalAvdelningActionPerformed
 
    
 

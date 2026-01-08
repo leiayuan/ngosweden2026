@@ -115,17 +115,61 @@ public static void main (String args[]){
         System.out.println(sqlFraga);
         String dbLosen = idb.fetchSingle(sqlFraga);
         if (dbLosen != null && losen.equals(dbLosen))
-            {
-            new Meny(idb, epost).setVisible(true);
-this.dispose(); 
+            { // hämta aid
+            String aid = idb.fetchSingle(
+                "SELECT aid FROM anstalld WHERE epost = '" + epost + "'"
+            );
+
+            // ADMIN
+            String arAdmin = idb.fetchSingle(
+                "SELECT aid FROM admin WHERE aid = " + aid
+            );
+            if (arAdmin != null) {
+                new adminmeny(idb, epost).setVisible(true);
+                this.dispose();
+                return;
+            }
+            
+            // PROJEKTCHEF
+            String arProjektchef = idb.fetchSingle(
+                "SELECT projektchef FROM projekt WHERE projektchef = " + aid
+            );
+            if (arProjektchef != null) {
+                new projektchef(idb, epost).setVisible(true);
+                this.dispose();
+                return;
+            }
+
+            // HANDLÄGGARE
+            String arHandlaggare = idb.fetchSingle(
+                "SELECT aid FROM handlaggare WHERE aid = " + aid
+            );
+            if (arHandlaggare != null) {
+                new Meny(idb, epost).setVisible(true);
+                this.dispose();
+                return;
+            }
+
+            
+
+            // Om ingen roll hittas
+            lblFelmeddelande.setText("Ingen behörighet hittades");
+            lblFelmeddelande.setVisible(true);
+
+        } else {
+            lblFelmeddelande.setText("Felaktigt e-post eller lösenord");
+            lblFelmeddelande.setVisible(true);
         }
-        else{
-           lblFelmeddelande.setVisible(true); 
-        }
-    }catch (InfException ex){
-    System.out.println(ex.getMessage());
-    }//GEN-LAST:event_btnLoggaINActionPerformed
+
+    } catch (InfException ex) {
+        System.out.println(ex.getMessage());
+        lblFelmeddelande.setText("Ett fel inträffade");
+        lblFelmeddelande.setVisible(true);
     }
+           
+       
+    }//GEN-LAST:event_btnLoggaINActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -136,5 +180,4 @@ this.dispose();
     private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLosenord;
     // End of variables declaration//GEN-END:variables
-
 }
