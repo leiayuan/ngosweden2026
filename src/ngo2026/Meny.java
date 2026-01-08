@@ -28,13 +28,13 @@ public class Meny extends javax.swing.JFrame {
         initComponents();
         lblAnvandare.setText(epost);
         // Göm allt först
-        btnMinaProjekt.setVisible(false);   
-        btnProjektAvdelning.setVisible(false);
-        btnFiltreraProjekt.setVisible(false);
-        btnPartners.setVisible(false);
-        btnHallbarhetsmal.setVisible(false);
-        btnPersonalAvdelning.setVisible(false);
-        btnSokHandlaggare.setVisible(false);
+        btnMinaProjekt.setVisible(true);   
+        btnProjektAvdelning.setVisible(true);
+        btnFiltreraProjekt.setVisible(true);
+        btnPartners.setVisible(true);
+        btnHallbarhetsmal.setVisible(true);
+        btnPersonalAvdelning.setVisible(true);
+        btnSokHandlaggare.setVisible(true);
     }
 
     /**
