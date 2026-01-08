@@ -14,21 +14,19 @@ import oru.inf.InfException;
 public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
-    private String roll;
-    private String avdelning;
+
+ 
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Meny.class.getName());
 
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String epost, String roll, String avdelning){
+    public Meny(InfDB idb, String epost ){
         this.inloggadAnvandare = epost;
-        this.idb = idb;
-        this.roll = roll;
-        this.avdelning = avdelning;
+        this.idb = idb;     
         initComponents();
-        lblAnvandare.setText(epost + " (" + roll + ") ");
+        lblAnvandare.setText(epost);
         // Göm allt först
         btnMinaProjekt.setVisible(false);   
         btnProjektAvdelning.setVisible(false);
@@ -37,17 +35,6 @@ public class Meny extends javax.swing.JFrame {
         btnHallbarhetsmal.setVisible(false);
         btnPersonalAvdelning.setVisible(false);
         btnSokHandlaggare.setVisible(false);
-
-// Handläggare
-        if (roll.equalsIgnoreCase("HANDLAGGARE")) {
-        btnMinaProjekt.setVisible(true);
-        btnProjektAvdelning.setVisible(true);
-        btnFiltreraProjekt.setVisible(true);
-        btnPartners.setVisible(true);
-        btnHallbarhetsmal.setVisible(true);
-        btnPersonalAvdelning.setVisible(true);
-        btnSokHandlaggare.setVisible(true);
-}
     }
 
     /**

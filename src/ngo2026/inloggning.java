@@ -115,16 +115,8 @@ public static void main (String args[]){
         System.out.println(sqlFraga);
         String dbLosen = idb.fetchSingle(sqlFraga);
         if (dbLosen != null && losen.equals(dbLosen))
-{
-          String roll = idb.fetchSingle(
-    "SELECT roll FROM anstalld WHERE epost = '" + epost + "'"
-);
-
-String avdelning = idb.fetchSingle(
-    "SELECT avdelning FROM anstalld WHERE epost = '" + epost + "'"
-);
-
-new Meny(idb, epost, roll, avdelning).setVisible(true);
+        {
+            new Meny(idb, epost).setVisible(true);
 this.dispose(); 
         }
         else{
