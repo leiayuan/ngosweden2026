@@ -94,7 +94,13 @@ public class inloggning extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public static void main (String args[]){
+    java.awt.EventQueue.invokeLater(new Runnable(){
+        public void run(){
+         //new Inloggning().setVisible(true);   
+        }
+});
+}
     private void TfEpostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfEpostActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfEpostActionPerformed
@@ -103,62 +109,31 @@ public class inloggning extends javax.swing.JFrame {
         String epost = TfEpost.getText();
         String losen = TfLosenord.getText();
         
-   
-        try {
-        String sqlFraga =
-        "SELECT losenord FROM anstalld WHERE epost = '" + epost + "'";
 
+    try {
+        String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + epost+ "'";
+        System.out.println(sqlFraga);
         String dbLosen = idb.fetchSingle(sqlFraga);
+        if (dbLosen != null && losen.equals(dbLosen))
+{
+          String roll = idb.fetchSingle(
+    "SELECT roll FROM anstalld WHERE epost = '" + epost + "'"
+);
 
-        if (dbLosen == null) {
-            lblFelmeddelande.setVisible(true);
-            return;
+String avdelning = idb.fetchSingle(
+    "SELECT avdelning FROM anstalld WHERE epost = '" + epost + "'"
+);
+
+new Meny(idb, epost, roll, avdelning).setVisible(true);
+this.dispose(); 
         }
-
-        if (losen.equals(dbLosen)) {
-String roll = null;
-
-// kolla admin
-if (idb.fetchSingle(
-        "SELECT epost FROM admin WHERE epost = '" + epost + "'") != null) {
-    roll = "ADMIN";
-}
-// kolla projektchef
-else if (idb.fetchSingle(
-        "SELECT epost FROM projektchef WHERE epost = '" + epost + "'") != null) {
-    roll = "PROJEKTCHEF";
-}
-// annars handläggare
-else if (idb.fetchSingle(
-        "SELECT epost FROM handlaggare WHERE epost = '" + epost + "'") != null) {
-    roll = "HANDLÄGGARE";
-}
-            
-
-            String avdelning = idb.fetchSingle(
-                "SELECT avdelning FROM anstalld WHERE epost = '" + epost + "'"
-            );
-
-            new Meny(idb, roll, epost, avdelning).setVisible(true);
-            this.dispose(); // stäng loginfönstret
-
-        } else {
-            lblFelmeddelande.setVisible(true);
+        else{
+           lblFelmeddelande.setVisible(true); 
         }
-
-    } catch (InfException ex) {
-        System.out.println(ex.getMessage());
-        lblFelmeddelande.setVisible(true);
-    }
-
-
-            
-        
-       
+    }catch (InfException ex){
+    System.out.println(ex.getMessage());
     }//GEN-LAST:event_btnLoggaINActionPerformed
- /**
-     * @param args the command line arguments
-     */
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -169,4 +144,5 @@ else if (idb.fetchSingle(
     private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLosenord;
     // End of variables declaration//GEN-END:variables
-} 
+
+}

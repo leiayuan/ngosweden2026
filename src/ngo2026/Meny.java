@@ -22,13 +22,13 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String inloggadAnvandare, String roll, String avdelning){
-        this.inloggadAnvandare = inloggadAnvandare;
+    public Meny(InfDB idb, String epost, String roll, String avdelning){
+        this.inloggadAnvandare = epost;
         this.idb = idb;
         this.roll = roll;
         this.avdelning = avdelning;
         initComponents();
-        lblAnvandare.setText(inloggadAnvandare + " (" + roll + ") ");
+        lblAnvandare.setText(epost + " (" + roll + ") ");
         // Göm allt först
         btnMinaProjekt.setVisible(false);   
         btnProjektAvdelning.setVisible(false);
