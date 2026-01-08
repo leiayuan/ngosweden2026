@@ -115,7 +115,7 @@ public static void main (String args[]){
         System.out.println(sqlFraga);
         String dbLosen = idb.fetchSingle(sqlFraga);
         if (dbLosen != null && losen.equals(dbLosen))
-        {
+            {
             new Meny(idb, epost).setVisible(true);
 this.dispose(); 
         }
