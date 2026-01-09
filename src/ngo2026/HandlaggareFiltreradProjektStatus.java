@@ -61,7 +61,7 @@ public class HandlaggareFiltreradProjektStatus extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProjekt);
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj status", "Pågående", "Planerat", "Avslutat", " " }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj status", "Pågående", "Planerat", "Avslutat" }));
         cbStatus.addActionListener(this::cbStatusActionPerformed);
 
         btnFiltrera.setText("Filtrera");
@@ -115,13 +115,16 @@ private void filtreraProjekt() {
 private void fyllTabell(String status) {
     try {
         String sql =
-            "SELECT projektnamn, startdatum, slutdatum, status " +
-            "FROM projekt " +
-            "WHERE avdelning = " + avdelningId;
+    "SELECT DISTINCT p.projektnamn, p.startdatum, p.slutdatum, p.status " +
+    "FROM projekt p " +
+    "JOIN ans_proj ap ON p.pid = ap.pid " +
+    "JOIN anstalld a ON ap.aid = a.aid " +
+    "WHERE a.avdelning = " + avdelningId;
 
         if (status != null) {
-            sql += " AND status = '" + status + "'";
+            sql += " AND p.status = '" + status + "'";
         }
+        System.out.println(sql);
 var resultat = idb.fetchRows(sql);
         DefaultTableModel modell =
             (DefaultTableModel) tblProjekt.getModel();
