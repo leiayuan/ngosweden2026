@@ -145,7 +145,7 @@ public static void main (String args[]){
                 "SELECT aid FROM handlaggare WHERE aid = " + aid
             );
             if (arHandlaggare != null) {
-                new Meny(idb, epost).setVisible(true);
+                new Meny(idb, epost, Integer.parseInt(aid)).setVisible(true);
                 this.dispose();
                 return;
             }

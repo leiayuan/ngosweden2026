@@ -14,6 +14,8 @@ import oru.inf.InfException;
 public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
+    private Integer aid;
+
 
  
     
@@ -22,11 +24,12 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String epost ){
+    public Meny(InfDB idb, String epost, Integer aid ){
         this.inloggadAnvandare = epost;
-        this.idb = idb;     
+        this.idb = idb; 
+        this.aid = aid;
         initComponents();
-        lblAnvandare.setText("Användare" + epost);
+        lblAnvandare.setText("Användare " + epost);
         btnMinaProjekt.setVisible(true);   
         btnProjektAvdelning.setVisible(true);
         btnFiltreraProjekt.setVisible(true);
@@ -146,7 +149,7 @@ public class Meny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        // TODO add your handling code here:
+     new MinaUppgifter(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     private void btnProjektAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektAvdelningActionPerformed
