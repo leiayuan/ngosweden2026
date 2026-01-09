@@ -14,14 +14,18 @@ import oru.inf.InfException;
 public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
+<<<<<<< Updated upstream
 
  
+=======
+>>>>>>> Stashed changes
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Meny.class.getName());
 
     /**
      * Creates new form Meny
      */
+<<<<<<< Updated upstream
     public Meny(InfDB idb, String epost ){
         this.inloggadAnvandare = epost;
         this.idb = idb;     
@@ -35,6 +39,13 @@ public class Meny extends javax.swing.JFrame {
         btnHallbarhetsmal.setVisible(false);
         btnPersonalAvdelning.setVisible(false);
         btnSokHandlaggare.setVisible(false);
+=======
+    public Meny(InfDB idb, String inloggadAnvandare){
+        this.inloggadAnvandare = inloggadAnvandare;
+        this.idb = idb;
+        initComponents();
+        lblAnvandare.setText(inloggadAnvandare);
+>>>>>>> Stashed changes
     }
 
     /**
@@ -47,128 +58,34 @@ public class Meny extends javax.swing.JFrame {
     private void initComponents() {
 
         lblAnvandare = new javax.swing.JLabel();
-        btnMinaUppgifter = new javax.swing.JButton();
-        btnMinaProjekt = new javax.swing.JButton();
-        btnProjektAvdelning = new javax.swing.JButton();
-        btnFiltreraProjekt = new javax.swing.JButton();
-        btnPartners = new javax.swing.JButton();
-        btnHallbarhetsmal = new javax.swing.JButton();
-        btnPersonalAvdelning = new javax.swing.JButton();
-        btnSokHandlaggare = new javax.swing.JButton();
-        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnMinaUppgifter.setText("Mina uppgifter");
-        btnMinaUppgifter.addActionListener(this::btnMinaUppgifterActionPerformed);
-
-        btnMinaProjekt.setText("Mina projekt");
-
-        btnProjektAvdelning.setText("Projekt på min avdelning");
-        btnProjektAvdelning.addActionListener(this::btnProjektAvdelningActionPerformed);
-
-        btnFiltreraProjekt.setText("Filtrera Projekt");
-
-        btnPartners.setText("Partners");
-
-        btnHallbarhetsmal.setText("Hållbarhetsmål");
-
-        btnPersonalAvdelning.setText("Personal på min avdelning");
-
-        btnSokHandlaggare.setText("Sök handläggare");
-
-        btnLoggaUt.setText("Logga ut");
+        lblAnvandare.setText("label1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btnProjektAvdelning)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSokHandlaggare))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMinaUppgifter)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnMinaProjekt)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnPersonalAvdelning))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPartners)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnHallbarhetsmal)
-                                .addGap(16, 16, 16))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnFiltreraProjekt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLoggaUt)
-                                .addGap(30, 30, 30)))))
-                .addGap(46, 46, 46))
+                .addGap(103, 103, 103)
+                .addComponent(lblAnvandare)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnMinaUppgifter)
-                        .addGap(3, 3, 3)
-                        .addComponent(btnMinaProjekt))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(btnPersonalAvdelning)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProjektAvdelning)
-                    .addComponent(btnSokHandlaggare))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFiltreraProjekt)
-                    .addComponent(btnLoggaUt))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPartners)
-                    .addComponent(btnHallbarhetsmal))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(lblAnvandare)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMinaUppgifterActionPerformed
-
-    private void btnProjektAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektAvdelningActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProjektAvdelningActionPerformed
-
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltreraProjekt;
-    private javax.swing.JButton btnHallbarhetsmal;
-    private javax.swing.JButton btnLoggaUt;
-    private javax.swing.JButton btnMinaProjekt;
-    private javax.swing.JButton btnMinaUppgifter;
-    private javax.swing.JButton btnPartners;
-    private javax.swing.JButton btnPersonalAvdelning;
-    private javax.swing.JButton btnProjektAvdelning;
-    private javax.swing.JButton btnSokHandlaggare;
     private javax.swing.JLabel lblAnvandare;
     // End of variables declaration//GEN-END:variables
 
