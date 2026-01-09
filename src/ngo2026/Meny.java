@@ -65,8 +65,9 @@ public class Meny extends javax.swing.JFrame {
         btnMinaUppgifter.addActionListener(this::btnMinaUppgifterActionPerformed);
 
         btnMinaProjekt.setText("Mina projekt");
+        btnMinaProjekt.addActionListener(this::btnMinaProjektActionPerformed);
 
-        btnProjektAvdelning.setText("Projekt på min avdelning");
+        btnProjektAvdelning.setText("Filtrerade projekt beroende på status");
         btnProjektAvdelning.addActionListener(this::btnProjektAvdelningActionPerformed);
 
         btnFiltreraProjekt.setText("Filtrera Projekt");
@@ -99,22 +100,23 @@ public class Meny extends javax.swing.JFrame {
                             .addComponent(lblAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnProjektAvdelning)
-                                    .addComponent(btnMinaUppgifter))
-                                .addGap(49, 49, 49)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnProjektAvdelning)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnMinaUppgifter)
+                                                .addGap(126, 126, 126)
+                                                .addComponent(btnMinaProjekt)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnPartners)
+                                        .addGap(183, 183, 183)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnPartners)
-                                            .addComponent(btnMinaProjekt))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnPersonalAvdelning)
-                                            .addComponent(btnHallbarhetsmal))
-                                        .addGap(48, 48, 48))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnFiltreraProjekt)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(btnPersonalAvdelning)
+                                    .addComponent(btnHallbarhetsmal)
+                                    .addComponent(btnFiltreraProjekt))
+                                .addGap(48, 48, 48)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -153,12 +155,16 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     private void btnProjektAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektAvdelningActionPerformed
-        // TODO add your handling code here:
+      new HandlaggareFiltreradProjektStatus(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnProjektAvdelningActionPerformed
 
     private void btnPersonalAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalAvdelningActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPersonalAvdelningActionPerformed
+
+    private void btnMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektActionPerformed
+new HandlaggareProjekt(idb, aid).setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinaProjektActionPerformed
 
    
 
